@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class HomePageTemp extends StatelessWidget {
 
+  final elements =['Element1', 'Element2', 'Element3', 'Element4'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,19 +11,32 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Components Temp'),
       ),
       body: ListView(
-        children: [
-          ListTile(
-            title: Text('Titol List'),
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Titol list 2'),
-          ),
-          ListTile(
-            title: Text('Titol ListTitle3'),
-          )
-        ],
-      ),
+        children: _crearElements(),
+      )
     );
+  }
+
+  List<Widget> _crearElements(){
+
+    List<Widget> llista = [];
+    for(String element in elements){
+      final tempWidget = ListTile(
+        title: Text(element),
+      );
+      llista..add(tempWidget)
+            ..add(Divider());
+
+  /*  llista.add(tempWidget);
+      llista.add(Divider());  */
+
+
+  /*  elements.forEach((element){
+      llista.add(ListTile(
+        title: Text(element),
+        ));
+      });                           */
+
+    }
+    return llista;
   }
 }
