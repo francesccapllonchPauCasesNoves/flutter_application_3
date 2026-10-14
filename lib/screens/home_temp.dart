@@ -46,8 +46,20 @@ class HomePageTemp extends StatelessWidget {
       return Column(
         children: [
           ListTile(
-            title: Text(element)
+            title: Text(element),
+            subtitle: Text('Descripcio dels elements'),
+            leading: const Icon(Icons.account_tree_outlined,
+                  color: Colors.pink,
+                  size: 24.0),
+            trailing: const Icon(Icons.abc,
+                  color: Colors.amber,
+                  size: 24.0),
+            onTap: (){
+              print('Has tocat un element!');
+            },
           ),
+          Divider(),
+          
         ],
       );
     });
