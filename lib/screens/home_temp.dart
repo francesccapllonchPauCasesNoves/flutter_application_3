@@ -43,8 +43,12 @@ class HomePageTemp extends StatelessWidget {
   List<Widget> _crearElementsModoDificil(){
     
     var widgets = elements.map((element) { 
-      return ListTile(
-        title: Text(element)
+      return Column(
+        children: [
+          ListTile(
+            title: Text(element)
+          ),
+        ],
       );
     });
 
