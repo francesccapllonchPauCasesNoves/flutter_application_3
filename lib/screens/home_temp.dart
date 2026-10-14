@@ -11,7 +11,7 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Components Temp'),
       ),
       body: ListView(
-        children: _crearElements(),
+        children: _crearElementsModoDificil(),
       )
     );
   }
@@ -38,5 +38,16 @@ class HomePageTemp extends StatelessWidget {
 
     }
     return llista;
+  }
+
+  List<Widget> _crearElementsModoDificil(){
+    
+    var widgets = elements.map((element) { 
+      return ListTile(
+        title: Text(element)
+      );
+    });
+
+    return widgets.toList();
   }
 }
