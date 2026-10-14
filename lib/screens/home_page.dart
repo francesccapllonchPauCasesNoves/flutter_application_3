@@ -28,14 +28,39 @@ Widget _llista() {
       );
 
 
-    NO FUNCIONARIA JA QUE L'APP TENDRIA EFECTE CONGELAT */
+    NO FUNCIONARIA JA QUE L'APP TENDRIA EFECTE CONGELAT 
 
+
+    D'aquesta manera funcionaria correctament
     return ListView(
       children: _llistaElements(),
+    ); */
+
+    return FutureBuilder(
+      future: menuProvider.CarregarDades(),
+      initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
+        print('builder');
+        print(snapshot.data);
+        return ListView(
+          children: _llistaElements(),
+        );
+      },
     );
 }
 
-List<Widget> _llistaElements(){
-  print(menuProvider.opcions);
-  return [];
+List<Widget> _llistaElements(List<dynamic>? data){
+  final List<Widget> elements = [];
+
+  data?.forEach((element){
+    final widgetTemp = ListTile(
+      title: Text(element['texte']),
+      leading: Icon(Icons.account_circle, color: Colors.blue,),
+      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+      onTap: (){},
+    );
+    elements..add(widgetTemp)
+            ..add(Divider());
+  });
+  return elements;
 }
