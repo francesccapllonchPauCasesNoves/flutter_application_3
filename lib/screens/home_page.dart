@@ -18,9 +18,21 @@ class HomePage extends StatelessWidget {
 
 Widget _llista() {
 
-  return ListView(
-    children: _llistaElements(),
-  );
+  /*
+      menuProvider.CarregarDades().then((data){
+        print('Llista: ');
+        print(data);
+      });
+      return ListView(
+        children: _llistaElements(),
+      );
+
+
+    NO FUNCIONARIA JA QUE L'APP TENDRIA EFECTE CONGELAT */
+
+    return ListView(
+      children: _llistaElements(),
+    );
 }
 
 List<Widget> _llistaElements(){
