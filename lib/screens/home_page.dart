@@ -15,4 +15,13 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Widget? _llista() {}
+Widget _llista() {
+
+  return ListView(
+    children: _llistaElements(),
+  );
+}
+
+List<Widget> _llistaElements(){
+  return [];
+}
