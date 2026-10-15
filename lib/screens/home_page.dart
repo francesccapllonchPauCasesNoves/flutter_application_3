@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/alert_page.dart';
 import 'package:flutter_application_3/providers/menu_providers.dart';
 import 'package:flutter_application_3/utils/icona_string_utils.dart';
 
@@ -42,17 +43,16 @@ Widget _llista() {
     return FutureBuilder(
       future: menuProvider.CarregarDades(),
       initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
-        print('builder');
-        print(snapshot.data);
+      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+
         return ListView(
-          children: _llistaElements(snapshot.data),
+          children: _llistaElements(context, snapshot.data),
         );
       },
     );
 }
 
-List<Widget> _llistaElements(List<dynamic>? data){
+List<Widget> _llistaElements(BuildContext context, List<dynamic>? data){
   final List<Widget> elements = [];
 
   data?.forEach((element){ 
@@ -60,7 +60,12 @@ List<Widget> _llistaElements(List<dynamic>? data){
       title: Text(element['texte']),
       leading: getIcon(element['icona']),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-      onTap: (){},
+      onTap: (){
+        final ruta = MaterialPageRoute(builder: (context){
+          return AlertPage();
+        });
+        Navigator.push(context, ruta);
+      },
     );
     elements..add(widgetTemp)
             ..add(Divider());
