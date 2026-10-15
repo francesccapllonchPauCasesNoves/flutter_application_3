@@ -1,6 +1,9 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/providers/menu_providers.dart';
+import 'package:flutter_application_3/utils/icona_string_utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -43,7 +46,7 @@ Widget _llista() {
         print('builder');
         print(snapshot.data);
         return ListView(
-          children: _llistaElements(),
+          children: _llistaElements(snapshot.data),
         );
       },
     );
@@ -52,10 +55,10 @@ Widget _llista() {
 List<Widget> _llistaElements(List<dynamic>? data){
   final List<Widget> elements = [];
 
-  data?.forEach((element){
+  data?.forEach((element){ 
     final widgetTemp = ListTile(
       title: Text(element['texte']),
-      leading: Icon(Icons.account_circle, color: Colors.blue,),
+      leading: getIcon(element['icona']),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
       onTap: (){},
     );
