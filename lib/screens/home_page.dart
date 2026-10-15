@@ -61,10 +61,10 @@ List<Widget> _llistaElements(BuildContext context, List<dynamic>? data){
       leading: getIcon(element['icona']),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
       onTap: (){
-        final ruta = MaterialPageRoute(builder: (context){
-          return AlertPage();
-        });
-        Navigator.push(context, ruta);
+        final ruta = MaterialPageRoute(builder: (context) => AlertPage(),
+        );
+        //Navigator.push(context, ruta);
+        Navigator.pushNamed(context, element['ruta']);
       },
     );
     elements..add(widgetTemp)
