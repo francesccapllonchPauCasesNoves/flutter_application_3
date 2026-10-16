@@ -6,7 +6,7 @@ class AvatarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pagina Alert'),
+        title: Text('avatar page'),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_back),

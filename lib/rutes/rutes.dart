@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/alert_page.dart';
 import 'package:flutter_application_3/pages/avatar_page.dart';
+import 'package:flutter_application_3/pages/cards_page.dart';
 import 'package:flutter_application_3/screens/home_page.dart';
 
 /*
@@ -18,5 +19,6 @@ Map<String, WidgetBuilder> getRutes(){
   '/'         :(BuildContext context) => HomePage(),
   'alert'     :(BuildContext context) => AlertPage(),
   'avatar'    :(BuildContext context) => AvatarPage(),
-  }
+  'cards'     :(BuildContext context) => CardPage(),
+  };
 }
