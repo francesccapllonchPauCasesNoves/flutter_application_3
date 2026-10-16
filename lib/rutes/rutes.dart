@@ -19,6 +19,6 @@ Map<String, WidgetBuilder> getRutes(){
   '/'         :(BuildContext context) => HomePage(),
   'alert'     :(BuildContext context) => AlertPage(),
   'avatar'    :(BuildContext context) => AvatarPage(),
-  'cards'     :(BuildContext context) => CardPage(),
+  'card'     :(BuildContext context) => CardPage(),
   };
 }

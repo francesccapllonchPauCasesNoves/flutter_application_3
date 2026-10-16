@@ -46,9 +46,21 @@ class CardPage extends StatelessWidget {
     return Card(
       child: Column(
         children: [
-          Image(
-            image: NetworkImage('https://picsum.photos/id/237/600/300'),
+
+          FadeInImage(placeholder: AssetImage('assets/jar-loafing.gif'), 
+          image: NetworkImage( 'https://www.freegreatpicture.com/files/30/20083-large-beach-coast.jpg'),
+          fadeInDuration: Duration(milliseconds: 100),
+          height: 250,
+          fit: BoxFit.cover,
+
           ),
+
+
+          /* Image(
+            image: NetworkImage('https://picsum.photos/id/237/600/300'),
+          ), */
+
+
           Container(
             child: Text('Titol de la imatge'),
             padding: EdgeInsets.all(10),
