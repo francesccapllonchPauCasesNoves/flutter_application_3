@@ -12,7 +12,9 @@ class CardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(10.0),
         children: [
-          _cardTipus1()
+          _cardTipus1(),
+          SizedBox(height: 30.0),
+          _cardTipus2(),
         ],
       )
     );
@@ -34,6 +36,22 @@ class CardPage extends StatelessWidget {
               TextButton(onPressed: (){}, child: Text('Ok')),
               TextButton(onPressed: (){}, child: Text('Cancelar')),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _cardTipus2(){
+    return Card(
+      child: Column(
+        children: [
+          Image(
+            image: NetworkImage('https://picsum.photos/id/237/600/300'),
+          ),
+          Container(
+            child: Text('Titol de la imatge'),
+            padding: EdgeInsets.all(10),
           ),
         ],
       ),
