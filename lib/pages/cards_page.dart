@@ -16,6 +16,14 @@ const CardPage({Key? key}) : super(key: key);
           _cardTipus1(),
           SizedBox(height: 30.0),
           _cardTipus2(),
+          SizedBox(height: 30.0),
+          _cardTipus1(),
+          SizedBox(height: 30.0),
+          _cardTipus1(),
+          SizedBox(height: 30.0),
+          _cardTipus2(),
+          SizedBox(height: 30.0)
+
         ],
       )
     );
@@ -24,6 +32,7 @@ const CardPage({Key? key}) : super(key: key);
   Widget _cardTipus1(){
     return Card(
       elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
       child: Column(
         children: [
           ListTile( 
@@ -45,7 +54,8 @@ const CardPage({Key? key}) : super(key: key);
   }
 
   Widget _cardTipus2(){
-    return Card(
+    final targeta = Container(
+      //clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
 
@@ -69,6 +79,24 @@ const CardPage({Key? key}) : super(key: key);
           ),
         ],
       ),
+    );
+    return Container(
+      child: ClipRRect(
+        child: targeta,
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 10.0)
+          )
+        ],
+        color: Colors.white
+      )
     );
   }
 }
