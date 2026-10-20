@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
+
+const CardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,10 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipus1(){
     return Card(
+      elevation: 10.0,
       child: Column(
         children: [
-          ListTile(
+          ListTile( 
             leading: Icon(Icons.photo_album, color: Colors.blue,),
             title: Text('Targeta1'),
             subtitle: Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.'),
@@ -47,8 +49,8 @@ class CardPage extends StatelessWidget {
       child: Column(
         children: [
 
-          FadeInImage(placeholder: AssetImage('assets/jar-loafing.gif'), 
-          image: NetworkImage( 'https://www.freegreatpicture.com/files/30/20083-large-beach-coast.jpg'),
+          FadeInImage(placeholder: AssetImage('assets/jar-loading.gif'), 
+          image: NetworkImage( 'https://fastly.picsum.photos/id/237/600/300.jpg?hmac=iRVPLLVQxFogSDvoPLrs3stJmz9g636YRQiWCDrU5MM'),
           fadeInDuration: Duration(milliseconds: 100),
           height: 250,
           fit: BoxFit.cover,
