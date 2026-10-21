@@ -7,6 +7,25 @@ class AvatarPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('avatar page'),
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 10.0),
+            child: CircleAvatar(  
+              child: Text('JC'),
+              backgroundColor: Colors.brown,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(5.0),
+            child:  CircleAvatar(
+              backgroundImage: NetworkImage('https://static.wikia.nocookie.net/minion/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest/scale-to-width-down/600?cb=20160316002021&path-prefix=es'),
+              radius: 30.0,
+            ),
+          ),
+        ],
+      ),
+      body: Center(
+        child: FadeInImage(placeholder: AssetImage('assets/jar-loading.gif'), image: NetworkImage('https://static.wikia.nocookie.net/minion/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest/scale-to-width-down/600?cb=20160316002021&path-prefix=es')),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_back),
