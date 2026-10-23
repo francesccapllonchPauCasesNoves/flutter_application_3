@@ -8,9 +8,25 @@ class LlistaPage extends StatefulWidget {
 }
 
 class _LlistaPageState extends State<LlistaPage> {
-  List<int> _llistaNombres =[];
-  int darrerItem = 0;
+  List<int> _llistaNombres = [];
+  int _darrerItem = 0;
   ScrollController _scrollController = new ScrollController();
+
+  @override
+  void initState(){
+    super.initState();
+    _carregaNou();
+    _scrollController.addListener((){
+      print(_scrollController.position.pixels);
+      if(_scrollController.position.atEdge){
+        if(_scrollController.position.pixels == 0){
+          print('Scroll a l\'inici');
+        }else{
+          print('Scroll al final');
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,5 +50,13 @@ class _LlistaPageState extends State<LlistaPage> {
         );
         
       });
+  }
+
+  _carregaNou(){
+    for(int i = 0; i<5; i++){
+      _llistaNombres.add(_darrerItem);
+      _darrerItem++;
+    }
+    setState(() {});
   }
 }
