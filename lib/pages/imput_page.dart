@@ -14,7 +14,11 @@ class _InputPageState extends State<InputPage> {
   String _nom = '';
   String _email = '';
   String _data = '';
+  String _pais = 'Andorra';
   final TextEditingController _inputFieldDataController = TextEditingController();
+  List<String> _paisos = ['Andorra','Anglaterra','Dinamarca','Espanya','França'];
+
+
   
   @override
   Widget build(BuildContext context) {
@@ -34,6 +38,8 @@ class _InputPageState extends State<InputPage> {
          _crearPassword(),
          Divider(),
          _crearData(context),
+         Divider(),
+         _crearCropdown(),
          Divider(),
          _crearPersona(),
          Divider(),
@@ -68,6 +74,7 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('Nom:$_nom'),
       subtitle: Text('Correu: $_email'),
+      trailing: Text(_pais),
     );
   }
 
@@ -134,5 +141,36 @@ class _InputPageState extends State<InputPage> {
         _inputFieldDataController.text = _data;
       });
     }
+  }
+
+  Widget _crearCropdown(){
+    return Row(
+      children: [
+        Icon(Icons.language),
+        SizedBox(width: 30.0,),
+        Expanded(
+          child: DropdownButton(
+            value: _pais,
+            items: getOptionDropdown(),
+            onChanged: (opcio){
+              setState(() {
+                _pais = opcio as String;
+              });
+            },
+            ),
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<String>> getOptionDropdown(){
+    List<DropdownMenuItem<String>> llista =[];
+    _paisos.forEach((pais){
+      llista.add(DropdownMenuItem(
+        child: Text(pais),
+        value: pais,
+      ));
+    });
+    return llista;
   }
 }
