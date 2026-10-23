@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
     'accessibility' : Icons.accessibility,
     'folder_open' : Icons.folder_open,
     'donut_large' : Icons.donut_large
+    
   };
 
   getIcon(String nomIcona){
