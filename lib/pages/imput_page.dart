@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+
 
 class InputPage extends StatefulWidget {
   InputPage({Key? key}) : super(key: key);
@@ -9,6 +12,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   String _nom = '';
+  String _email = '';
+  String _data = '';
+  final TextEditingController _inputFieldDataController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -23,11 +29,16 @@ class _InputPageState extends State<InputPage> {
         children: [
           _crearInput(),
           Divider(),
-          _crearPersona()
+          _crearEmail(),
+          Divider(),
+         _crearPassword(),
+         Divider(),
+         _crearData(context),
+         Divider(),
+         _crearPersona(),
+         Divider(),
         ],
-        
       ),
-      
     );
   } 
   
@@ -56,6 +67,72 @@ class _InputPageState extends State<InputPage> {
   _crearPersona(){
     return ListTile(
       title: Text('Nom:$_nom'),
+      subtitle: Text('Correu: $_email'),
     );
+  }
+
+  _crearPassword(){
+     return TextField(
+     obscureText: true,
+     decoration: InputDecoration(
+       border: OutlineInputBorder(
+         borderRadius: BorderRadius.circular(20.0)
+       ),
+       hintText: 'Password',
+       labelText: 'Password',
+       suffixIcon: Icon(Icons.lock_open),
+       icon: Icon(Icons.lock)
+     ),
+     onChanged: (valor){
+       // setState(() {
+       //   _nom = valor;
+       // });
+     },
+   );
+  }
+
+  _crearEmail(){
+    return TextField(
+        keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0)
+        ),
+        hintText: 'Correu electrònic',
+        labelText: 'Correu electrònic',
+        suffixIcon: Icon(Icons.alternate_email),
+        icon: Icon(Icons.email),
+        
+      ),
+      onChanged: (valor){
+        _email = valor;
+        print(_nom);
+      }
+    );
+  }
+
+  
+
+  Widget _crearData(BuildContext context){
+    return TextField(
+      enableInteractiveSelection: false,
+      controller: _inputFieldDataController,
+    );
+  }
+
+  void _seleccionaData(BuildContext context) async{
+    DateTime? picked = await showDatePicker(
+      context: context,
+      locale: Locale('es', 'ES'),
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2020), 
+      lastDate: DateTime(2030)
+    );
+    if (picked != null){
+      setState(() {
+        _data = picked.toString();
+        _inputFieldDataController.text = _data;
+      });
+    }
   }
 }

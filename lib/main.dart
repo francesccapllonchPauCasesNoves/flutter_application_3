@@ -3,6 +3,7 @@ import 'package:flutter_application_3/pages/alert_page.dart';
 import 'package:flutter_application_3/pages/avatar_page.dart';
 import 'package:flutter_application_3/rutes/rutes.dart';
 import 'package:flutter_application_3/screens/home_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
  
 void main() => runApp(MyApp());
  
@@ -21,6 +22,16 @@ class MyApp extends StatelessWidget {
           builder: (BuildContext context) => AlertPage()
           );
       },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''), // English, no country code
+        Locale('es', ''), // Spanish, no country code
+      ]
+
     );
   }
 }
