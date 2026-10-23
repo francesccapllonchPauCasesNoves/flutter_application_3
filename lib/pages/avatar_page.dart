@@ -25,7 +25,11 @@ class AvatarPage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: FadeInImage(placeholder: AssetImage('assets/jar-loading.gif'), image: NetworkImage('https://static.wikia.nocookie.net/minion/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest/scale-to-width-down/600?cb=20160316002021&path-prefix=es')),
+        child: FadeInImage(
+          placeholder: AssetImage('assets/jar-loading.gif'), 
+          image: 
+            NetworkImage('https://static.wikia.nocookie.net/minion/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest/scale-to-width-down/600?cb=20160316002021&path-prefix=es')
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_back),
