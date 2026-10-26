@@ -9,8 +9,8 @@ import 'package:flutter/rendering.dart';
     'folder_open' : Icons.folder_open,
     'donut_large' : Icons.donut_large,
     'tune'            : Icons.tune,
-    'list'            : Icons.list
-    
+    'list'            : Icons.list,
+    'input'       :Icons.input
   };
 
   getIcon(String nomIcona){

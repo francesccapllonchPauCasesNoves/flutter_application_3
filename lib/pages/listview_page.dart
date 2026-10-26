@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class LlistaPage extends StatefulWidget {
@@ -11,6 +13,7 @@ class _LlistaPageState extends State<LlistaPage> {
   List<int> _llistaNombres = [];
   int _darrerItem = 0;
   ScrollController _scrollController = new ScrollController();
+  bool _estaCarregant = false;
 
   @override
   void initState(){
@@ -23,9 +26,26 @@ class _LlistaPageState extends State<LlistaPage> {
           print('Scroll a l\'inici');
         }else{
           print('Scroll al final');
+          //_carregaNou();
+          fetchData();
         }
       }
     });
+  }
+
+  void peticioHTTP(){
+   _estaCarregant = false;
+   _carregaNou();
+   _scrollController.animateTo(
+    _scrollController.position.pixels + 100, 
+    duration: Duration(milliseconds: 250), 
+    curve: Curves.fastOutSlowIn
+    );
+  }
+
+  void dispose(){
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -34,22 +54,40 @@ class _LlistaPageState extends State<LlistaPage> {
       appBar: AppBar(
         title: Text('Llistes'),
       ),
-      body: _crearLlista(),
+      body: Stack(
+        children: [
+        _crearLlista(),
+        _crearLoading()
+        ]
+      ), 
+      
     );
   }
 
   Widget _crearLlista(){
-    return ListView.builder(
+    return RefreshIndicator(
+      onRefresh: obtenirPagina, 
+      child: ListView.builder(
       controller: _scrollController,
       itemCount: _llistaNombres.length,
       itemBuilder: (BuildContext context, int index){
         final imatge = _llistaNombres[index];
         return FadeInImage(
-          placeholder: AssetImage('assets/jar-loadig.gif'),
+          placeholder: AssetImage('assets/jar-loading.gif'),
           image: NetworkImage('https://picsum.photos/id/$imatge/200/30')
         );
         
-      });
+      }));
+  }
+
+  Future<Null> obtenirPagina()async{
+    final duration = new Duration(seconds: 2);
+    new Timer(duration,(){
+      _llistaNombres.clear();
+      _darrerItem++;
+      _carregaNou();
+    });
+    return Future.delayed(duration);
   }
 
   _carregaNou(){
@@ -59,4 +97,36 @@ class _LlistaPageState extends State<LlistaPage> {
     }
     setState(() {});
   }
+
+  Future<Timer> fetchData() async{
+   _estaCarregant = true;
+   setState(() { });
+   final duration = new Duration(seconds: 2);
+   return Timer(duration, peticioHTTP);
+  }
+
+
+  Widget _crearLoading(){
+    if(_estaCarregant){
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator()
+            ],
+          ),
+          SizedBox(height: 15.0)
+        ],
+      );
+    }else{
+      return Container();
+    }
+  }
+
+  
+ 
+
 }
